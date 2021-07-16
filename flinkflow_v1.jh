@@ -1,0 +1,480 @@
+/**
+* [start] Alarm
+*/
+entity Alarm {
+	id String
+    typeId String
+    jobId String
+    runId String
+    eventTime Instant
+    eventMessage String
+    linkageTriggeredFlag Boolean
+    linkageMessage String
+    lockVersion String
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+
+entity AlarmLinkageStrategy {	
+	id String
+	eventHandleService String
+	remark String
+	deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+
+entity AlarmType {	
+	id String
+	name String
+    aliasName String
+    strategyId String
+	remark String
+	deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+
+entity AlarmTypeJobRel {	
+	runId String
+	alarmTypeId String
+}
+/**
+* [end] Alarm
+*/
+
+/**
+* [start] checkpoint
+*/
+entity CheckPointBasis{
+	id String
+    model Integer
+    storageType Integer
+    stateBackend Integer
+    storageDir String
+    interval Long
+    timeout Long
+    minPauseBetweenCheckpoints Long
+    maxConcurrentCheckpoints Integer
+    tolerableCheckpointFailureNum Integer
+    failoverRetryNum Integer
+    failoverRetryDelay Integer
+    enableFlag	Boolean
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+
+entity CheckPointConfig{
+	id String
+    checkpointId String
+    configKeyId String
+    value String
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+
+entity CheckPointConfigItem{
+	id String
+    key String
+    defaultValue String
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+/**
+* [end] checkpoint
+*/
+
+/**
+* [start] connector
+*/
+entity ConnectorConfig{
+	id String
+    name String
+    resourceTypeId String
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+
+entity ConnectorConfigItem{
+	id String
+    connectorConfigId String
+    confKeyId String
+    value String
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+
+entity ConnectorResourceStageRel{
+	connectorConfigId String
+    stageId String
+    resourceId String
+}
+/**
+* [end] connector
+*/
+
+/**
+* [start] diagnosis
+*/
+entity DiagnosisEngine{
+	id String
+    name String
+    type String
+    linkageHandleService String
+    linkageJobId String
+    enableFlag	Boolean
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+
+entity DiagnosisJobRel{
+	runId String
+    typeId String
+}
+
+entity DiagnosisType{
+	id String
+    name String
+    aliasName String
+    remark String
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+/**
+* [end] diagnosis
+*/
+
+/**
+* [start] other
+*/
+entity Deploy{
+	id String
+    jobId String
+    buildId String
+    targetStageId String
+    jobSnapshot String
+    parallelism Integer
+    savepoint String
+    enableTriggerSavepoint Boolean
+    status Integer
+    delayTime Long
+    retryNum Long
+    message String
+    lockVersion String
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+
+entity FieldType{
+	id String
+    type Integer
+    value String
+    defaultLen Integer
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+
+
+entity Stage {
+	id String
+    name String
+    aliasName String
+    parentId String
+    remark String 
+ 	deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String   
+}
+
+entity FileMeta{
+	id String
+    filePath String
+    fileType Integer
+	deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String 
+}
+/**
+* [end] other
+*/
+/**
+* [start] udf
+*/
+entity Udf{
+	id String 
+    name String
+    classFullName String
+    udfType Integer
+    sourceType Integer
+    usageType Integer
+    udfDefinition String
+    udfJar String
+    remark String 
+ 	deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String   
+}
+
+entity UdfJobRel{
+	jobId String
+    udfId String
+}
+/**
+* [end] udf
+*/
+
+/**
+* [start] job
+*/
+entity Job{
+	id String
+    jobName String
+    jobType Integer
+    jobScope Integer
+    jobDefinition String
+    jobRunnerId String
+    pipelineId String
+    dimensionTableIds String
+    sourceTableId String
+    sinkTableId String
+    checkpointId String
+    remark String
+    parentJobId String
+    targetFlinkVersionIds String
+    lockVersion String
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String   
+}
+
+entity JobBuild{
+	id String 
+    buildNum Integer
+    jobSnapshot String
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String   
+}
+
+entity JobPipeline{
+	id String
+    name String
+    status Integer
+    remark String
+    lockVersion String
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String   
+}
+
+entity JobRunner{
+	id String
+    name String
+    fileId String
+    targetFlinkVersionIds String
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String   	
+}
+
+entity JobSourceWatermark{
+	id String
+    jobId String
+    sourceSinkId String
+    sourceSinkFieldId String
+    type Integer
+    interval Integer
+    timeUnit Integer
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String   
+}
+/**
+* [end] job
+*/
+
+/**
+* [start] resource
+*/
+entity ResourceBasis{
+	id String
+    name String
+    resourceTypeId String
+    hostUrl String
+    dashboardUrl String
+    status Integer
+    stageId Integer
+    versionId String
+    remark String
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String   
+}
+entity ResourceType{
+	id String
+    name String
+    scope Integer
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String   
+}
+
+entity ResourceTypeConfTpl{
+	id String
+    resourceTypeId String
+    confType Integer
+    key String
+    defaultValue String
+    remark String
+    bindHostUrlFlag Boolean
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String     
+}
+
+entity ResourceVersion{
+	id String
+    name String
+    type Integer
+    enableFlag Boolean
+	deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+
+entity SourceSink{
+	id String
+    name String
+    connectorConfigId String
+    remark String
+	deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String    
+}
+
+entity SourceSinkField{
+	id String
+    sourceSinkId String
+    fieldTypeId String
+    fieldTypeLen Integer
+    fieldName String
+	deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String    
+}
+
+/**
+* [end] resource
+*/
+
+/**
+* [start] run
+*/
+entity RunInfo{
+	id String 
+    jobId String 
+    deployId String
+    targetStageId String
+    flinkJobId String
+    savepoint String
+    parallelism Integer
+    overviewUrl String
+    status Integer
+    recordReceivedNum Long
+    recordSentNum Long
+    startTime Instant
+    stopTime Instant
+    stopType Integer
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+
+entity RunInfoHis{
+	id String 
+    jobId String 
+    deployId String
+    targetStageId String
+    flinkJobId String
+    savepoint String
+    parallelism Integer
+    overviewUrl String
+    status Integer
+    recordReceivedNum Long
+    recordSentNum Long
+    startTime Instant
+    stopTime Instant
+    stopType Integer
+    deleteFlag Boolean
+    createDate Instant
+    createBy String
+    updateDate Instant
+    updateBy String
+}
+/**
+* [end] run
+*/
